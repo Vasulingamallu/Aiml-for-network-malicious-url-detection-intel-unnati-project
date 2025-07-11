@@ -1,1 +1,68 @@
+In your Malicious URL & Payload Inspector project, you used two machine learning models:
 
+🔍 1. Random Forest Classifier
+✅ What is it?
+A Random Forest is an ensemble learning method based on Decision Trees. It builds multiple decision trees and combines their results to improve classification accuracy and reduce overfitting.
+
+🔧 How it works:
+During training, it creates many decision trees using different parts (subsets) of the training dataset.
+
+Each tree gives a prediction (e.g., “malicious” or “benign”).
+
+The final prediction is made using majority voting among all trees.
+
+✅ Why it's used in your project:
+It handles high-dimensional data well (like your 20+ lexical URL features).
+
+It’s robust against noise and irrelevant features.
+
+It performs well with minimal hyperparameter tuning.
+
+🧠 What it learns:
+From your features like:
+
+contains_ip_address
+
+count_atrate
+
+suspicious_words
+
+url_length
+
+It learns patterns that typically appear in malicious URLs (e.g., too many digits, keywords like login, bank, or presence of IP instead of domain).
+
+🔍 2. Support Vector Machine (SVM)
+✅ What is it?
+A Support Vector Machine is a supervised learning algorithm that finds the best boundary (called a hyperplane) to separate classes (malicious vs. benign) in the feature space.
+
+🔧 How it works:
+It tries to maximize the margin between classes by finding the best line (in 2D) or hyperplane (in higher dimensions).
+
+Good for binary classification problems with clear separation.
+
+✅ Why it's used in your project:
+SVMs are effective in small to medium-sized datasets.
+
+They perform well in high-dimensional spaces (e.g., lexical features).
+
+They are precise and less prone to overfitting in some cases compared to decision trees.
+
+🧠 What it learns:
+It finds combinations of features (e.g., suspicious word + presence of “@” + high URL length) that best separate benign from malicious URLs.
+
+🤖 Comparison Summary
+Feature	Random Forest	SVM
+Nature	Ensemble of Decision Trees	Margin-based classifier
+Performance	Robust and good generalization	Very accurate on clean datasets
+Handles Noisy Data	Yes	Less tolerant
+Training Speed	Faster (on large datasets)	Slower (especially on large sets)
+Prediction Explanation	Easy to interpret (via tree paths)	Harder to interpret
+
+📌 In Your Project
+You used both models to give predictions. Your app shows:
+
+Prediction_RF: Prediction from Random Forest
+
+Prediction_SVM: Prediction from SVM
+
+This lets users compare results from both models, and increases trust in the prediction when both agree.
